@@ -1,0 +1,6 @@
+.env
+auth/
+data/
+estado.json
+node_modules/
+legado/

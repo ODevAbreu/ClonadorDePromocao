@@ -1,0 +1,81 @@
+{% extends "base.html" %}
+{% block title %}Contas{% endblock %}
+{% block body %}
+<div class="page-head">
+  <h1>Contas</h1>
+  <p class="lede">As contas do Telegram que o sistema usa para encaminhar. A sessão fica guardada com segurança e vale como login.</p>
+</div>
+
+<div class="card">
+  <h2>Contas conectadas</h2>
+  {% if accounts %}
+    <table>
+      <tr><th>Nome</th><th>Telefone</th><th>Status</th><th></th></tr>
+      {% for a in accounts %}
+      <tr>
+        <td><strong>{{ a.name }}</strong></td>
+        <td class="muted">{{ a.phone }}</td>
+        <td><span class="pill {{ 'on' if a.status=='authenticated' else 'off' }}">{{ a.status }}</span></td>
+        <td>
+          <form class="inline" method="post" action="/accounts/{{ a.id }}/delete"
+                onsubmit="return confirm('Remover esta conta?')">
+            <button class="danger">Remover</button>
+          </form>
+        </td>
+      </tr>
+      {% endfor %}
+    </table>
+  {% else %}
+    <p class="muted">Nenhuma conta ainda.</p>
+  {% endif %}
+</div>
+
+<div class="card">
+  <h2>Adicionar conta</h2>
+  <label>Nome (apelido para você identificar)</label>
+  <input id="name" placeholder="Minha conta principal">
+  <label>Telefone (com DDI)</label>
+  <input id="phone" placeholder="+5511999999999">
+  <div class="row" style="margin-top:14px;">
+    <button onclick="sendCode()">Enviar código</button>
+    <span id="status" class="muted"></span>
+  </div>
+
+  <div id="step2" style="display:none;">
+    <label>Código recebido no Telegram</label>
+    <input id="code" placeholder="12345">
+    <label>Senha de 2FA (só se a conta tiver)</label>
+    <input id="password" type="password" placeholder="deixe vazio se não usa">
+    <div class="row" style="margin-top:10px;">
+      <button onclick="confirmCode()">Confirmar e salvar</button>
+    </div>
+  </div>
+</div>
+
+<script>
+const S = document.getElementById('status');
+async function sendCode() {
+  const phone = document.getElementById('phone').value.trim();
+  if (!phone) { S.textContent = 'Informe o telefone.'; return; }
+  S.textContent = 'Enviando código...';
+  const fd = new FormData(); fd.append('phone', phone);
+  const r = await fetch('/accounts/send-code', {method:'POST', body:fd});
+  const d = await r.json();
+  if (d.ok) { S.textContent = 'Código enviado. Veja o Telegram.';
+              document.getElementById('step2').style.display='block'; }
+  else { S.textContent = 'Erro: ' + d.error; }
+}
+async function confirmCode() {
+  const fd = new FormData();
+  fd.append('name', document.getElementById('name').value.trim());
+  fd.append('phone', document.getElementById('phone').value.trim());
+  fd.append('code', document.getElementById('code').value.trim());
+  fd.append('password', document.getElementById('password').value);
+  S.textContent = 'Confirmando...';
+  const r = await fetch('/accounts/confirm', {method:'POST', body:fd});
+  const d = await r.json();
+  if (d.ok) { location.reload(); }
+  else { S.textContent = 'Erro: ' + d.error; }
+}
+</script>
+{% endblock %}

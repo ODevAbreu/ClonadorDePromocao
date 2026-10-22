@@ -1,0 +1,138 @@
+{% extends "base.html" %}
+{% block title %}Integrações{% endblock %}
+{% block body %}
+<div class="page-head">
+  <h1>Integrações de afiliado</h1>
+  <p class="lede">Cadastre suas integrações e, em cada <a href="/">tarefa</a>, marque quais usar. Quando uma mensagem chega, o link é trocado pelo seu — depois das substituições de texto.</p>
+</div>
+
+<div class="card">
+  <h2>Minhas integrações</h2>
+  {% if items %}
+    <table>
+      <tr><th>Nome</th><th>Tipo</th><th>Config</th><th>Status</th><th></th></tr>
+      {% for it in items %}
+      <tr>
+        <td><strong>{{ it.obj.name }}</strong></td>
+        <td>
+          {% if it.obj.type in ('amazon','shopee','mercadolivre') %}
+            <img class="list-logo" src="/static/{{ it.obj.type }}.svg" alt="{{ it.obj.type }}">
+          {% else %}{{ it.obj.type }}{% endif %}
+        </td>
+        <td class="muted">
+          {% if it.obj.type == 'amazon' %}tag: {{ it.cfg.store_id }}
+          {% elif it.obj.type == 'generic' %}{{ it.cfg.domains }} → {{ it.cfg.params }}
+          {% elif it.obj.type == 'shopee' %}app_id: {{ it.cfg.app_id }}
+          {% elif it.obj.type == 'mercadolivre' %}tag: {{ it.cfg.tag }}
+          {% endif %}
+        </td>
+        <td><span class="pill {{ 'on' if it.obj.enabled else 'off' }}">
+          {{ 'ativa' if it.obj.enabled else 'pausada' }}</span></td>
+        <td class="row">
+          <form class="inline" method="post" action="/integrations/{{ it.obj.id }}/toggle">
+            <button class="ghost">{{ 'Pausar' if it.obj.enabled else 'Ativar' }}</button>
+          </form>
+          <form class="inline" method="post" action="/integrations/{{ it.obj.id }}/delete"
+                onsubmit="return confirm('Apagar?')">
+            <button class="danger">Apagar</button>
+          </form>
+        </td>
+      </tr>
+      {% endfor %}
+    </table>
+  {% else %}
+    <p class="muted">Nenhuma integração ainda.</p>
+  {% endif %}
+</div>
+
+<div class="card">
+  <h2>Adicionar integração</h2>
+  <form method="post" action="/integrations/save">
+    <label>Plataforma</label>
+    <div class="pick-grid">
+      <label class="pick">
+        <input type="radio" name="type" value="amazon" checked onchange="showFields()">
+        <div class="pick-inner">
+          <div class="logo-plate"><img src="/static/amazon.svg" alt="Amazon"></div>
+          <div><div class="pick-name">Amazon</div>
+          <div class="pick-desc">Coloca sua tag no link. Sem conta.</div></div>
+        </div>
+      </label>
+      <label class="pick">
+        <input type="radio" name="type" value="shopee" onchange="showFields()">
+        <div class="pick-inner">
+          <div class="logo-plate"><img src="/static/shopee.svg" alt="Shopee"></div>
+          <div><div class="pick-name">Shopee</div>
+          <div class="pick-desc">API oficial. Precisa de app_id e secret.</div></div>
+        </div>
+      </label>
+      <label class="pick">
+        <input type="radio" name="type" value="mercadolivre" onchange="showFields()">
+        <div class="pick-inner">
+          <div class="logo-plate"><img src="/static/mercadolivre.svg" alt="Mercado Livre"></div>
+          <div><div class="pick-name">Mercado Livre</div>
+          <div class="pick-desc">API de afiliados. Precisa de tag e cookie.</div></div>
+        </div>
+      </label>
+      <label class="pick">
+        <input type="radio" name="type" value="generic" onchange="showFields()">
+        <div class="pick-inner">
+          <div class="logo-plate accent">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 15l6-6"/><path d="M11 6l1-1a3.5 3.5 0 0 1 5 5l-1 1M13 18l-1 1a3.5 3.5 0 0 1-5-5l1-1"/></svg>
+          </div>
+          <div><div class="pick-name">Genérica</div>
+          <div class="pick-desc">Parâmetro de afiliado em domínios seus.</div></div>
+        </div>
+      </label>
+    </div>
+
+    <label>Nome</label>
+    <input name="name" required placeholder="Ex.: Amazon BR">
+
+    <div class="fields" data-type="amazon">
+      <label>Seu ID de afiliado (tag)</label>
+      <input name="store_id" placeholder="seutag-20">
+      <p class="muted">Vira <code>amazon.com.br/dp/ASIN?tag=seutag-20</code>.</p>
+    </div>
+
+    <div class="fields" data-type="generic" style="display:none;">
+      <label>Domínios (separados por vírgula)</label>
+      <input name="domains" placeholder="loja.com, outraloja.com.br">
+      <label>Parâmetros a adicionar (k=v;k2=v2)</label>
+      <input name="params" placeholder="aff=meucodigo;ref=12345">
+      <label>Parâmetros a remover (opcional, separados por vírgula)</label>
+      <input name="strip" placeholder="gclid, fbclid, utm_source">
+    </div>
+
+    <div class="fields" data-type="shopee" style="display:none;">
+      <label>App ID</label>
+      <input name="app_id" placeholder="do painel de afiliados Shopee">
+      <label>Secret</label>
+      <input name="secret" type="password" placeholder="do painel de afiliados Shopee">
+    </div>
+
+    <div class="fields" data-type="mercadolivre" style="display:none;">
+      <label>Tag de afiliado</label>
+      <input name="ml_tag" placeholder="sua tag do programa de afiliados ML">
+      <label>Cookie da sessão (da conta logada no ML)</label>
+      <input name="ml_cookie" type="password" placeholder="cole o cookie do navegador logado">
+      <p class="muted">O cookie é da sua conta logada em mercadolivre.com.br. Trate como senha.</p>
+    </div>
+
+    <div class="row" style="margin-top:16px;">
+      <button type="submit">Adicionar</button>
+    </div>
+  </form>
+</div>
+
+<script>
+function showFields() {
+  const checked = document.querySelector('input[name="type"]:checked');
+  const t = checked ? checked.value : 'amazon';
+  document.querySelectorAll('.fields').forEach(el => {
+    el.style.display = (el.dataset.type === t) ? 'block' : 'none';
+  });
+}
+showFields();
+</script>
+{% endblock %}

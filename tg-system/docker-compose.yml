@@ -1,0 +1,9 @@
+services:
+  tg-system:
+    build: .
+    restart: unless-stopped
+    env_file: .env
+    ports:
+      - "8000:8000"          # painel em http://SEU_VPS:8000
+    volumes:
+      - ./data:/app/data     # banco + sessões persistem fora do contêiner

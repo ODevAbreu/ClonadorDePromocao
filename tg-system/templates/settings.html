@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% block title %}Configurações{% endblock %}
+{% block body %}
+<div class="page-head">
+  <h1>Configurações</h1>
+  <p class="lede">Credenciais da API do Telegram, usadas por todas as contas. Ficam salvas — você só precisa preencher uma vez.</p>
+</div>
+
+<div class="card">
+  <h2>Credenciais da API do Telegram</h2>
+  <p class="muted">
+    Pegue em <a href="https://my.telegram.org" target="_blank">my.telegram.org</a>
+    → <em>API development tools</em>. Ficam salvas no banco; você só precisa fazer isto uma vez.
+  </p>
+
+  {% if request.query_params.get('saved') %}
+    <p style="color:var(--ok)">✓ Salvo.</p>
+  {% endif %}
+
+  <p>
+    Status atual:
+    {% if configured %}
+      <span class="pill on">configurado</span>
+      {% if masked %}<span class="muted">(hash: {{ masked }})</span>{% endif %}
+    {% else %}
+      <span class="pill off">não configurado</span>
+    {% endif %}
+  </p>
+
+  <form method="post" action="/settings/save">
+    <label>API ID</label>
+    <input name="api_id" value="{{ api_id }}" placeholder="123456" required>
+
+    <label>API HASH</label>
+    <input name="api_hash" placeholder="{{ 'deixe vazio para manter o atual' if configured else 'cole o hash aqui' }}">
+
+    <div class="row" style="margin-top:16px;">
+      <button type="submit">Salvar</button>
+    </div>
+  </form>
+</div>
+
+<div class="card">
+  <p class="muted">
+    Depois de salvar, vá em <a href="/accounts">Contas</a>
+    para logar sua conta, e então crie uma tarefa em
+    <a href="/">Tarefas</a>.
+  </p>
+</div>
+{% endblock %}

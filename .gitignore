@@ -1,0 +1,18 @@
+# Segredos e sessões — NUNCA versionar
+**/.env
+**/auth/
+**/data/
+**/*.session
+**/*.session-journal
+**/estado.json
+
+# Dependências e artefatos
+**/node_modules/
+**/.venv/
+**/__pycache__/
+**/*.pyc
+
+# Logs e temporários
+**/*.log
+**/qr.png
+**/legado/

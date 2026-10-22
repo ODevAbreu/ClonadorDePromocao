@@ -1,0 +1,124 @@
+{% extends "base.html" %}
+{% block title %}{{ 'Editar' if task else 'Nova' }} clonagem{% endblock %}
+{% block body %}
+<div class="page-head">
+  <h1>{{ 'Editar' if task else 'Nova' }} clonagem</h1>
+  <p class="lede">Copia o histórico da origem para o destino. Mesmos filtros, substituições e integrações do forward.</p>
+</div>
+
+<form class="card" method="post" action="/clone/save">
+  <input type="hidden" name="task_id" value="{{ task.id if task else '' }}">
+
+  <label>Nome da clonagem</label>
+  <input name="name" required value="{{ task.name if task else '' }}">
+
+  <label>Conta</label>
+  <select name="account_id" id="account_id" onchange="loadDialogs()" required>
+    {% for a in accounts %}
+      <option value="{{ a.id }}" {{ 'selected' if task and task.account_id==a.id }}>
+        {{ a.name }} ({{ a.phone }})
+      </option>
+    {% endfor %}
+  </select>
+
+  <div class="row">
+    <div style="flex:1; min-width:220px;">
+      <label>Grupo de ORIGEM</label>
+      <select name="source_id" id="source_id" required></select>
+    </div>
+    <div style="flex:1; min-width:220px;">
+      <label>Grupo de DESTINO</label>
+      <select name="target_id" id="target_id" required></select>
+    </div>
+  </div>
+  <input type="hidden" name="source_name" id="source_name" value="{{ task.source_name if task else '' }}">
+  <input type="hidden" name="target_name" id="target_name" value="{{ task.target_name if task else '' }}">
+  <p class="hint" id="dlgStatus">Selecione a conta para carregar os grupos.</p>
+
+  <label>Termos BLOQUEADOS (deny, separados por vírgula)</label>
+  <input name="deny_items" value="{{ task.deny_items if task else '' }}" placeholder="concorrente, spam">
+
+  <label>Termos PERMITIDOS (allow — se preenchido, só passa quem contém)</label>
+  <input name="allow_items" value="{{ task.allow_items if task else '' }}" placeholder="oferta, promo">
+
+  <label class="inline-check">
+    <input type="checkbox" name="whole_word" {{ 'checked' if (task.whole_word if task else True) }}>
+    <span>Casar só palavra inteira ("ok" não casa "token")</span>
+  </label>
+
+  <label>Substituições (de=>para;de2=>para2 — prefixe de com re: para regex)</label>
+  <textarea name="replacements" placeholder="t.me/outro=>t.me/meu">{{ task.replacements if task else '' }}</textarea>
+
+  <div class="row">
+    <div style="flex:1; min-width:150px;">
+      <label>Intervalo entre mensagens (s)</label>
+      <input name="delay_between" type="number" step="0.5" min="0"
+             value="{{ task.delay_between if task else 2 }}">
+    </div>
+    <div style="flex:1; min-width:150px;">
+      <label>Descansar a cada N mensagens</label>
+      <input name="rest_every" type="number" step="1" min="0"
+             value="{{ task.rest_every if task else 0 }}">
+    </div>
+    <div style="flex:1; min-width:150px;">
+      <label>Tempo de descanso (s)</label>
+      <input name="rest_seconds" type="number" step="1" min="0"
+             value="{{ task.rest_seconds if task else 0 }}">
+    </div>
+  </div>
+  <p class="hint">Intervalos maiores reduzem o risco de bloqueio por flood do Telegram.</p>
+
+  <label>Integrações de afiliado (trocam o link pelo seu)</label>
+  {% if integrations %}
+    {% for ig in integrations %}
+      <label class="inline-check">
+        <input type="checkbox" name="integration_ids" value="{{ ig.id }}"
+               {{ 'checked' if ig.id in selected_ids }}>
+        <span>{{ ig.name }} <span class="muted">({{ ig.type }}{{ '' if ig.enabled else ' — pausada' }})</span></span>
+      </label>
+    {% endfor %}
+  {% else %}
+    <p class="hint">Nenhuma integração cadastrada —
+      <a href="/integrations">cadastre em Integrações</a> e volte aqui.</p>
+  {% endif %}
+
+  <div class="row" style="margin-top:20px;">
+    <button type="submit">Salvar</button>
+    <a class="btn ghost" href="/clone">Cancelar</a>
+  </div>
+</form>
+
+<script>
+const preset = {
+  source: "{{ task.source_id if task else '' }}",
+  target: "{{ task.target_id if task else '' }}"
+};
+async function loadDialogs() {
+  const accId = document.getElementById('account_id').value;
+  const st = document.getElementById('dlgStatus');
+  const src = document.getElementById('source_id');
+  const tgt = document.getElementById('target_id');
+  if (!accId) return;
+  st.textContent = 'Carregando grupos da conta...';
+  const r = await fetch('/accounts/' + accId + '/dialogs');
+  const d = await r.json();
+  if (!d.ok) { st.textContent = 'Erro: ' + d.error; return; }
+  src.innerHTML = ''; tgt.innerHTML = '';
+  for (const g of d.dialogs) {
+    src.add(new Option(g.name, g.id, false, g.id === preset.source));
+    tgt.add(new Option(g.name, g.id, false, g.id === preset.target));
+  }
+  syncNames();
+  st.textContent = d.dialogs.length + ' grupos/canais carregados.';
+}
+function syncNames() {
+  const src = document.getElementById('source_id');
+  const tgt = document.getElementById('target_id');
+  document.getElementById('source_name').value = src.options[src.selectedIndex]?.text || '';
+  document.getElementById('target_name').value = tgt.options[tgt.selectedIndex]?.text || '';
+}
+document.getElementById('source_id').addEventListener('change', syncNames);
+document.getElementById('target_id').addEventListener('change', syncNames);
+window.addEventListener('DOMContentLoaded', loadDialogs);
+</script>
+{% endblock %}

@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+{% block title %}Clone{% endblock %}
+{% block body %}
+<div class="row between" style="align-items:flex-end;">
+  <div class="page-head" style="margin-bottom:0;">
+    <h1>Clone</h1>
+    <p class="lede">Copia o histórico de um grupo de origem para o destino, do mais antigo ao mais novo. Dá para pausar e retomar de onde parou.</p>
+  </div>
+  {% if accounts %}
+    <a class="btn" href="/clone/new">Nova clonagem</a>
+  {% endif %}
+</div>
+<div style="height:28px;"></div>
+
+{% if not accounts %}
+  <div class="card">
+    <p class="muted">Você ainda não tem contas. Adicione uma antes de criar uma clonagem.</p>
+    <a class="btn" href="/accounts" style="margin-top:12px;">Ir para Contas</a>
+  </div>
+{% elif not tasks %}
+  <div class="card"><p class="muted">Nenhuma clonagem ainda. Crie a primeira.</p></div>
+{% else %}
+  <div class="card">
+    <table>
+      <tr><th>Nome</th><th>Origem → Destino</th><th>Progresso</th><th>Status</th><th></th></tr>
+      {% for t in tasks %}
+      <tr>
+        <td>
+          <strong>{{ t.name }}</strong>
+          {% if t.detail %}<div class="muted" style="font-size:13px;">{{ t.detail }}</div>{% endif %}
+        </td>
+        <td class="muted">{{ t.source_name or t.source_id }} → {{ t.target_name or t.target_id }}</td>
+        <td class="muted">{{ t.cloned_count }} clonadas</td>
+        <td>
+          {% set label = {'idle':'parada','running':'rodando','paused':'pausada','done':'concluída','error':'erro'} %}
+          <span class="pill {{ 'on' if t.status in ('running','done') else 'off' }}">
+            {{ label.get(t.status, t.status) }}
+          </span>
+        </td>
+        <td class="row">
+          {% if t.status == 'running' %}
+            <form class="inline" method="post" action="/clone/{{ t.id }}/pause">
+              <button class="ghost">Pausar</button>
+            </form>
+          {% else %}
+            <form class="inline" method="post" action="/clone/{{ t.id }}/start">
+              <button>{{ 'Retomar' if t.last_message_id else 'Iniciar' }}</button>
+            </form>
+          {% endif %}
+          <a class="btn ghost" href="/clone/{{ t.id }}/edit">Editar</a>
+          {% if t.cloned_count or t.last_message_id %}
+            <form class="inline" method="post" action="/clone/{{ t.id }}/reset"
+                  onsubmit="return confirm('Zerar o progresso? A próxima execução começa do início.')">
+              <button class="ghost">Reiniciar</button>
+            </form>
+          {% endif %}
+          <form class="inline" method="post" action="/clone/{{ t.id }}/delete"
+                onsubmit="return confirm('Apagar esta clonagem?')">
+            <button class="danger">Apagar</button>
+          </form>
+        </td>
+      </tr>
+      {% endfor %}
+    </table>
+  </div>
+{% endif %}
+{% endblock %}
