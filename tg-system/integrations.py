@@ -208,7 +208,50 @@ class MercadoLivreIntegration:
         host = _host(url)
         return "mercadolivre." in host or "mercadolibre." in host
 
+    def _product_from_social(self, social_url: str) -> str | None:
+        """Vitrine social (/social/<nick>) não é produto. Baixa o HTML e extrai
+        o produto real pelo link 'Ir para produto' (técnica do app original)."""
+        headers = dict(self.session_headers)
+        headers.update({
+            "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+            "sec-fetch-dest": "document",
+            "sec-fetch-mode": "navigate",
+            "sec-fetch-site": "none",
+            "upgrade-insecure-requests": "1",
+        })
+        if self.cookie:
+            headers["cookie"] = self.cookie
+        try:
+            from curl_cffi import requests as cffi
+
+            r = cffi.Session(impersonate="chrome").get(
+                social_url, headers=headers, allow_redirects=True, timeout=10
+            )
+            if r.status_code != 200:
+                return None
+            anchor = re.search(
+                r'<a[^>]+href="([^"]+)"[^>]*>\s*Ir para produto', r.text, re.I
+            )
+            if anchor:
+                return anchor.group(1)
+            sub = re.search(
+                r'"subtitle"\s*:\s*\{[^}]*"url"\s*:\s*"([^"]+)"', r.text
+            )
+            if sub:
+                return json.loads('"' + sub.group(1) + '"')
+        except Exception:  # noqa: BLE001
+            pass
+        return None
+
     def _sync(self, url: str) -> str:
+        # vitrine social (link de outro afiliado) -> acha o produto real primeiro
+        if "/social/" in url:
+            product = self._product_from_social(url)
+            if product:
+                url = product
+            else:
+                log.warning("[ML] não achei o produto na vitrine social: %s", url[:80])
+                return url
         # começa com a impressão digital do navegador (se o JSON foi colado)
         headers = dict(self.session_headers)
         headers.update({
@@ -275,15 +318,50 @@ def build_integrations(rows) -> list:
     return out
 
 
+_UA = (
+    "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
+    "(KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
+)
+_resolve_cache: dict[str, str] = {}
+
+
+def _resolve_sync(url: str) -> str:
+    """Segue redirecionamentos (links curtos de outros afiliados) até a URL final."""
+    if url in _resolve_cache:
+        return _resolve_cache[url]
+    final = url
+    try:
+        from curl_cffi import requests as cffi
+
+        resp = cffi.Session(impersonate="chrome").get(
+            url, allow_redirects=True, timeout=10, headers={"user-agent": _UA}
+        )
+        final = str(resp.url) or url
+    except Exception:  # noqa: BLE001 - rede/erro: usa a URL original
+        final = url
+    _resolve_cache[url] = final
+    return final
+
+
 async def rewrite_links(text: str, integrations: list) -> str:
-    """Troca cada URL do texto pelo link de afiliado da 1ª integração que casa."""
+    """Troca cada URL do texto pelo link de afiliado da 1ª integração que casa.
+
+    Resolve links curtos (amzn.to, meli.la, encurtadores de outros afiliados)
+    até a URL final ANTES de casar — senão esses links nunca batem com os
+    domínios das lojas e a tag não é trocada.
+    """
     if not text or not integrations:
         return text
     for url in set(URL_RE.findall(text)):
+        # 1ª tentativa: a URL como está (link direto da loja)
+        target = url
+        if not any(ig.matches(url) for ig in integrations):
+            # não bateu direto: resolve o link curto e tenta de novo
+            target = await asyncio.to_thread(_resolve_sync, url)
         for integration in integrations:
-            if integration.matches(url):
-                new = await integration.rewrite(url)
-                if new and new != url:
+            if integration.matches(target):
+                new = await integration.rewrite(target)
+                if new and new != target:
                     text = text.replace(url, new)
                 break
     return text
