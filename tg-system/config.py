@@ -14,6 +14,10 @@ PROXY_URL = os.getenv("PROXY_URL") or None
 # Senha simples para abrir o painel (deixe vazio para liberar — só em rede confiável).
 PANEL_PASSWORD = os.getenv("PANEL_PASSWORD", "")
 
+# Pasta do nodebot (ponte Telegram→WhatsApp), para a aba WhatsApp do painel.
+# No monorepo é a pasta irmã; em Docker, monte-a neste caminho via volume.
+NODEBOT_DIR = os.getenv("NODEBOT_DIR", os.path.join("..", "nodebot"))
+
 
 def require_api() -> None:
     if not API_ID or not API_HASH:

@@ -17,9 +17,12 @@ from __future__ import annotations
 import asyncio
 import hashlib
 import json
+import logging
 import re
 import time
 from urllib.parse import parse_qsl, urlencode, urlsplit, urlunsplit
+
+log = logging.getLogger("integrations")
 
 URL_RE = re.compile(r"https?://[^\s<>()\[\]{}\"']+")
 
@@ -37,6 +40,33 @@ def _set_params(url: str, params: dict[str, str], strip: list[str]) -> str:
         query.pop(key, None)
     query.update(params)
     return urlunsplit(parts._replace(query=urlencode(query)))
+
+
+# headers que não devem ser reenviados manualmente (quebram a requisição)
+_DROP_HEADERS = {"content-length", "host", "connection", "accept-encoding",
+                 "content-type", "accept"}
+
+
+def _parse_session(raw: str | None) -> tuple[str, dict]:
+    """Aceita o cookie puro OU um JSON de headers (colado do navegador).
+
+    Retorna (cookie, headers_extra). Se for JSON, usa TODOS os headers
+    (user-agent, sec-ch-ua...) para replicar a impressão digital do navegador.
+    """
+    raw = (raw or "").strip()
+    if raw.startswith("{"):
+        try:
+            data = json.loads(raw)
+            headers = {
+                k.lower(): v
+                for k, v in data.items()
+                if isinstance(v, str) and not k.startswith(":")
+                and k.lower() not in _DROP_HEADERS
+            }
+            return headers.get("cookie", ""), headers
+        except json.JSONDecodeError:
+            pass
+    return raw, {}
 
 
 def _csv(raw: str) -> list[str]:
@@ -171,7 +201,7 @@ class MercadoLivreIntegration:
     def __init__(self, name: str, cfg: dict) -> None:
         self.name = name
         self.tag = (cfg.get("tag") or "").strip()
-        self.cookie = (cfg.get("cookie") or "").strip()
+        self.cookie, self.session_headers = _parse_session(cfg.get("cookie"))
         self._cache: dict[str, str] = {}
 
     def matches(self, url: str) -> bool:
@@ -179,19 +209,19 @@ class MercadoLivreIntegration:
         return "mercadolivre." in host or "mercadolibre." in host
 
     def _sync(self, url: str) -> str:
-        headers = {
-            "Cookie": self.cookie,
+        # começa com a impressão digital do navegador (se o JSON foi colado)
+        headers = dict(self.session_headers)
+        headers.update({
             "accept": "application/json, text/plain, */*",
             "content-type": "application/json",
             "origin": "https://www.mercadolivre.com.br",
-            "cache-control": "no-cache",
-            "pragma": "no-cache",
-            "priority": "u=1, i",
             "referer": url,
             "sec-fetch-dest": "empty",
             "sec-fetch-mode": "cors",
             "sec-fetch-site": "same-origin",
-        }
+        })
+        if self.cookie:
+            headers["cookie"] = self.cookie
         body = json.dumps({"urls": [url], "tag": self.tag})
         resp = _post_with_retry(self.ENDPOINT, body, headers)
         if resp is not None:
@@ -203,6 +233,12 @@ class MercadoLivreIntegration:
                         return short
             except Exception:  # noqa: BLE001
                 pass
+        else:
+            log.warning(
+                "[ML] createLink falhou (provável 403 do Mercado Livre). "
+                "Copie os headers do request 'createLink' (XHR) do painel de "
+                "afiliados, não de um carregamento de página."
+            )
         return url
 
     async def rewrite(self, url: str) -> str:

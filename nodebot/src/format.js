@@ -6,7 +6,8 @@ export function extractText(msg) {
   return text || null;
 }
 
-/** Aplica o template configurado ({texto} vira a mensagem original). */
+/** Aplica o template configurado ({texto} vira a mensagem original).
+ *  Converte \n literal (vindo do .env numa linha só) em quebra real. */
 export function format(text) {
-  return config.template.replaceAll("{texto}", text);
+  return config.template.replaceAll("\\n", "\n").replaceAll("{texto}", text);
 }

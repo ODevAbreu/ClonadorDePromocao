@@ -6,12 +6,18 @@ import logging
 from contextlib import asynccontextmanager
 
 from fastapi import FastAPI, Form, Request
-from fastapi.responses import HTMLResponse, JSONResponse, RedirectResponse
+from fastapi.responses import (
+    FileResponse,
+    HTMLResponse,
+    JSONResponse,
+    RedirectResponse,
+)
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 
 import config
 import json
+import os
 
 from clone_worker import clone_runner
 from models import (
@@ -199,6 +205,89 @@ async def clone_delete(task_id: int):
             db.delete(task)
             db.commit()
     return RedirectResponse("/clone", status_code=303)
+
+
+# ---- ponte WhatsApp (nodebot) ------------------------------------------
+def _nodebot_path(*parts: str) -> str:
+    return os.path.join(config.NODEBOT_DIR, *parts)
+
+
+def read_nodebot_env() -> dict:
+    env = {}
+    path = _nodebot_path(".env")
+    if os.path.exists(path):
+        with open(path, encoding="utf-8") as f:
+            for line in f:
+                line = line.strip()
+                if line and not line.startswith("#") and "=" in line:
+                    key, value = line.split("=", 1)
+                    env[key.strip()] = value.strip()
+    return env
+
+
+def write_nodebot_env(updates: dict) -> None:
+    env = read_nodebot_env()
+    env.update({k: v for k, v in updates.items() if v is not None})
+    os.makedirs(config.NODEBOT_DIR, exist_ok=True)
+    with open(_nodebot_path(".env"), "w", encoding="utf-8") as f:
+        f.write("\n".join(f"{k}={v}" for k, v in env.items()) + "\n")
+
+
+def read_nodebot_status() -> dict:
+    try:
+        with open(_nodebot_path("data", "status.json"), encoding="utf-8") as f:
+            return json.load(f)
+    except Exception:  # noqa: BLE001
+        return {"state": "unknown"}
+
+
+@app.get("/whatsapp", response_class=HTMLResponse)
+def whatsapp_page(request: Request):
+    env = read_nodebot_env()
+    token = env.get("TELEGRAM_BOT_TOKEN", "")
+    # template guardado com \n literal -> mostra com quebras de linha reais
+    template = env.get("MESSAGE_TEMPLATE", "").replace("\\n", "\n")
+    return templates.TemplateResponse(
+        "whatsapp.html",
+        {
+            "request": request,
+            "status": read_nodebot_status(),
+            "channel_link": env.get("WHATSAPP_CHANNEL_LINK", ""),
+            "channel_jid": env.get("WHATSAPP_CHANNEL_JID", ""),
+            "template": template,
+            "token_set": bool(token),
+            "token_mask": (token[:6] + "…") if token else "",
+            "has_qr": os.path.exists(_nodebot_path("data", "qr.png")),
+        },
+    )
+
+
+@app.post("/whatsapp/save")
+async def whatsapp_save(
+    telegram_bot_token: str = Form(""),
+    channel_link: str = Form(""),
+    channel_jid: str = Form(""),
+    template: str = Form(""),
+):
+    updates = {}
+    if telegram_bot_token.strip():
+        updates["TELEGRAM_BOT_TOKEN"] = telegram_bot_token.strip()
+    if channel_link.strip():
+        updates["WHATSAPP_CHANNEL_LINK"] = channel_link.strip()
+    if channel_jid.strip():
+        updates["WHATSAPP_CHANNEL_JID"] = channel_jid.strip()
+    # guarda o template numa linha só (\n literal), o nodebot converte de volta
+    updates["MESSAGE_TEMPLATE"] = template.replace("\r\n", "\n").replace("\n", "\\n")
+    write_nodebot_env(updates)
+    return RedirectResponse("/whatsapp?saved=1", status_code=303)
+
+
+@app.get("/whatsapp/qr")
+def whatsapp_qr():
+    path = _nodebot_path("data", "qr.png")
+    if os.path.exists(path):
+        return FileResponse(path, media_type="image/png")
+    return JSONResponse({"ok": False, "error": "sem QR no momento"}, status_code=404)
 
 
 @app.get("/integrations", response_class=HTMLResponse)
