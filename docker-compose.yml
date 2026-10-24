@@ -1,0 +1,25 @@
+# Monorepo ClonadorDePromocao — sobe os dois serviços com um comando.
+# Uso na VPS:
+#   docker compose up -d --build       # sobe tudo em segundo plano
+#   docker compose logs -f nodebot     # ver o QR do WhatsApp na 1ª vez
+#   docker compose logs -f tg-system
+#   docker compose down                # parar
+
+services:
+  tg-system:
+    build: ./tg-system
+    restart: unless-stopped
+    env_file: ./tg-system/.env
+    ports:
+      - "8000:8000"                 # painel em http://SEU_VPS:8000
+    volumes:
+      - ./tg-system/data:/app/data  # banco (contas, tarefas, integrações, sessão TG)
+
+  nodebot:
+    build: ./nodebot
+    restart: unless-stopped
+    env_file: ./nodebot/.env
+    volumes:
+      - ./nodebot/auth:/app/auth    # sessão do WhatsApp (escaneie o QR 1x)
+      - ./nodebot/data:/app/data    # dedupe persistente
+    # Sem portas: o nodebot não expõe HTTP, só conecta a Telegram e WhatsApp.

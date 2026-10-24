@@ -1,0 +1,8 @@
+node_modules
+auth
+data
+legado
+.env
+*.log
+qr.png
+estado.json
