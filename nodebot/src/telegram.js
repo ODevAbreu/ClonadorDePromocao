@@ -20,7 +20,20 @@ export function startTelegram(onText) {
       if (processed.has(key)) return;
       processed.add(key);
 
-      await onText(text, msg);
+      // se a mensagem tem foto (produto), baixa para reenviar como imagem
+      let image = null;
+      if (Array.isArray(msg.photo) && msg.photo.length) {
+        try {
+          const fileId = msg.photo[msg.photo.length - 1].file_id; // maior resolução
+          const link = await bot.getFileLink(fileId);
+          const resp = await fetch(link);
+          image = Buffer.from(await resp.arrayBuffer());
+        } catch (e) {
+          log.warn("não baixei a imagem do Telegram:", e.message);
+        }
+      }
+
+      await onText(text, image);
     } catch (err) {
       log.error("Falha ao processar update do Telegram:", err.message);
     }

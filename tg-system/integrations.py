@@ -73,17 +73,18 @@ def _csv(raw: str) -> list[str]:
     return [x.strip() for x in (raw or "").split(",") if x.strip()]
 
 
-def _post_with_retry(url: str, data: str, headers: dict) -> "object | None":
-    """POST com curl_cffi (impersonate chrome) e retry exponencial. Síncrono."""
+def _post_with_retry(url: str, data: str, headers: dict, session=None) -> "object | None":
+    """POST com curl_cffi (impersonate chrome) e retry exponencial. Síncrono.
+    Se `session` for passada, reusa (mantém os cookies rotacionados)."""
     import random
 
     from curl_cffi import requests as cffi
 
-    session = cffi.Session(impersonate="chrome")
+    sess = session or cffi.Session(impersonate="chrome")
     for attempt in range(1, 6):
         try:
-            resp = session.post(url, data=data, headers=headers, timeout=10,
-                                 allow_redirects=True)
+            resp = sess.post(url, data=data, headers=headers, timeout=10,
+                             allow_redirects=True)
         except Exception:  # noqa: BLE001 - erro de rede: tenta de novo
             time.sleep(0.5 * attempt)
             continue
@@ -96,11 +97,31 @@ def _post_with_retry(url: str, data: str, headers: dict) -> "object | None":
     return None
 
 
+# ---- sessão persistente + gravação do cookie rotacionado -----------------
+# O ML rotaciona o cookie (nsa_rotok) a cada requisição. Mantendo uma sessão
+# viva e salvando os cookies de volta, a sessão não expira (paste once).
+_ml_sessions: dict = {}          # row_id -> curl_cffi Session persistente
+_cookie_persister = None         # callback(row_id, cookie_str) -> grava no banco
+
+
+def set_cookie_persister(fn) -> None:
+    """A app injeta aqui a função que grava o cookie atualizado no banco."""
+    global _cookie_persister
+    _cookie_persister = fn
+
+
+def _cookie_str_from_jar(session) -> str:
+    try:
+        return "; ".join(f"{n}={v}" for n, v in session.cookies.get_dict().items())
+    except Exception:  # noqa: BLE001
+        return ""
+
+
 # ---- integrações ---------------------------------------------------------
 class AmazonIntegration:
     type = "amazon"
 
-    def __init__(self, name: str, cfg: dict) -> None:
+    def __init__(self, name: str, cfg: dict, row_id=None) -> None:
         self.name = name
         self.tag = (cfg.get("store_id") or "").strip()
 
@@ -117,7 +138,7 @@ class AmazonIntegration:
 class GenericParamIntegration:
     type = "generic"
 
-    def __init__(self, name: str, cfg: dict) -> None:
+    def __init__(self, name: str, cfg: dict, row_id=None) -> None:
         self.name = name
         self.domains = _csv(cfg.get("domains", ""))
         self.strip = _csv(cfg.get("strip", ""))
@@ -144,7 +165,7 @@ class ShopeeIntegration:
     type = "shopee"
     ENDPOINT = "https://open-api.affiliate.shopee.com.br/graphql"
 
-    def __init__(self, name: str, cfg: dict) -> None:
+    def __init__(self, name: str, cfg: dict, row_id=None) -> None:
         self.name = name
         self.app_id = (cfg.get("app_id") or "").strip()
         self.secret = (cfg.get("secret") or "").strip()
@@ -198,8 +219,9 @@ class MercadoLivreIntegration:
     type = "mercadolivre"
     ENDPOINT = "https://www.mercadolivre.com.br/affiliate-program/api/v2/affiliates/createLink"
 
-    def __init__(self, name: str, cfg: dict) -> None:
+    def __init__(self, name: str, cfg: dict, row_id=None) -> None:
         self.name = name
+        self.row_id = row_id
         self.tag = (cfg.get("tag") or "").strip()
         self.cookie, self.session_headers = _parse_session(cfg.get("cookie"))
         self._cache: dict[str, str] = {}
@@ -207,6 +229,37 @@ class MercadoLivreIntegration:
     def matches(self, url: str) -> bool:
         host = _host(url)
         return "mercadolivre." in host or "mercadolibre." in host
+
+    def _session(self):
+        """Sessão curl_cffi persistente (por integração): mantém o cookie
+        rotativo vivo entre as chamadas, para a sessão do ML não expirar."""
+        from curl_cffi import requests as cffi
+
+        key = self.row_id if self.row_id is not None else id(self)
+        sess = _ml_sessions.get(key)
+        if sess is None:
+            sess = cffi.Session(impersonate="chrome")
+            for part in (self.cookie or "").split("; "):
+                if "=" in part:
+                    k, v = part.split("=", 1)
+                    try:
+                        sess.cookies.set(k, v, domain=".mercadolivre.com.br")
+                    except Exception:  # noqa: BLE001
+                        pass
+            _ml_sessions[key] = sess
+        return sess
+
+    def _persist(self, sess) -> None:
+        """Grava o cookie rotacionado de volta (via callback da app -> banco)."""
+        if self.row_id is None or _cookie_persister is None:
+            return
+        cookie = _cookie_str_from_jar(sess)
+        if cookie and cookie != self.cookie:
+            self.cookie = cookie
+            try:
+                _cookie_persister(self.row_id, cookie)
+            except Exception:  # noqa: BLE001
+                pass
 
     def _product_from_social(self, social_url: str) -> str | None:
         """Vitrine social (/social/<nick>) não é produto. Baixa o HTML e extrai
@@ -219,12 +272,8 @@ class MercadoLivreIntegration:
             "sec-fetch-site": "none",
             "upgrade-insecure-requests": "1",
         })
-        if self.cookie:
-            headers["cookie"] = self.cookie
         try:
-            from curl_cffi import requests as cffi
-
-            r = cffi.Session(impersonate="chrome").get(
+            r = self._session().get(
                 social_url, headers=headers, allow_redirects=True, timeout=10
             )
             if r.status_code != 200:
@@ -244,15 +293,18 @@ class MercadoLivreIntegration:
         return None
 
     def _sync(self, url: str) -> str:
+        original = url  # em qualquer falha, devolve isto (não degrada o link)
+        sess = self._session()
         # vitrine social (link de outro afiliado) -> acha o produto real primeiro
         if "/social/" in url:
             product = self._product_from_social(url)
+            self._persist(sess)
             if product:
                 url = product
             else:
-                log.warning("[ML] não achei o produto na vitrine social: %s", url[:80])
-                return url
-        # começa com a impressão digital do navegador (se o JSON foi colado)
+                log.warning("[ML] não achei o produto na vitrine social (provável "
+                            "403/bloqueio do ML): %s", url[:80])
+                return original
         headers = dict(self.session_headers)
         headers.update({
             "accept": "application/json, text/plain, */*",
@@ -263,26 +315,25 @@ class MercadoLivreIntegration:
             "sec-fetch-mode": "cors",
             "sec-fetch-site": "same-origin",
         })
-        if self.cookie:
-            headers["cookie"] = self.cookie
         body = json.dumps({"urls": [url], "tag": self.tag})
-        resp = _post_with_retry(self.ENDPOINT, body, headers)
+        resp = _post_with_retry(self.ENDPOINT, body, headers, session=sess)
+        self._persist(sess)  # salva o cookie rotacionado -> sessão não expira
         if resp is not None:
             try:
                 urls = resp.json().get("urls", [])
                 if urls:
                     short = urls[0].get("short_url")
                     if short:
+                        log.info("[ML] link trocado: %s -> %s", original[:50], short)
                         return short
             except Exception:  # noqa: BLE001
                 pass
         else:
             log.warning(
                 "[ML] createLink falhou (provável 403 do Mercado Livre). "
-                "Copie os headers do request 'createLink' (XHR) do painel de "
-                "afiliados, não de um carregamento de página."
+                "Renove o cookie na aba Integrações se persistir."
             )
-        return url
+        return original
 
     async def rewrite(self, url: str) -> str:
         if not self.tag or not self.cookie:
@@ -312,7 +363,7 @@ def build_integrations(rows) -> list:
         cls = _REGISTRY.get(row.type)
         if cls:
             try:
-                out.append(cls(row.name, json.loads(row.config or "{}")))
+                out.append(cls(row.name, json.loads(row.config or "{}"), getattr(row, "id", None)))
             except json.JSONDecodeError:
                 continue
     return out

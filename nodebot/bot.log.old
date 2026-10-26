@@ -1,0 +1,460 @@
+2026-10-25 17:54:15 | INFO  | Iniciando ponte Telegram → WhatsApp...
+2026-10-25 17:54:15 | INFO  | Telegram conectado (polling).
+Failed to decrypt message with any known session...
+Session error:Error: Bad MAC Error: Bad MAC
+    at Object.verifyMAC (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\crypto.js:87:15)
+    at SessionCipher.doDecryptWhisperMessage (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\session_cipher.js:250:16)
+    at async SessionCipher.decryptWithSessions (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\session_cipher.js:147:29)
+    at async 158110631084072.0 [as awaitable] (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\session_cipher.js:171:28)
+    at async _asyncQueueExecutor (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\queue_job.js:20:29)
+Failed to decrypt message with any known session...
+Session error:Error: Bad MAC Error: Bad MAC
+    at Object.verifyMAC (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\crypto.js:87:15)
+    at SessionCipher.doDecryptWhisperMessage (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\session_cipher.js:250:16)
+    at async SessionCipher.decryptWithSessions (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\session_cipher.js:147:29)
+    at async 158110631084072.0 [as awaitable] (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\session_cipher.js:171:28)
+    at async _asyncQueueExecutor (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\queue_job.js:20:29)
+Failed to decrypt message with any known session...
+Session error:Error: Bad MAC Error: Bad MAC
+    at Object.verifyMAC (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\crypto.js:87:15)
+    at SessionCipher.doDecryptWhisperMessage (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\session_cipher.js:250:16)
+    at async SessionCipher.decryptWithSessions (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\session_cipher.js:147:29)
+    at async 158110631084072.0 [as awaitable] (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\session_cipher.js:171:28)
+    at async _asyncQueueExecutor (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\queue_job.js:20:29)
+Failed to decrypt message with any known session...
+Session error:Error: Bad MAC Error: Bad MAC
+    at Object.verifyMAC (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\crypto.js:87:15)
+    at SessionCipher.doDecryptWhisperMessage (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\session_cipher.js:250:16)
+    at async SessionCipher.decryptWithSessions (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\session_cipher.js:147:29)
+    at async 158110631084072.0 [as awaitable] (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\session_cipher.js:171:28)
+    at async _asyncQueueExecutor (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\queue_job.js:20:29)
+Failed to decrypt message with any known session...
+Session error:Error: Bad MAC Error: Bad MAC
+    at Object.verifyMAC (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\crypto.js:87:15)
+    at SessionCipher.doDecryptWhisperMessage (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\session_cipher.js:250:16)
+    at async SessionCipher.decryptWithSessions (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\session_cipher.js:147:29)
+    at async 158110631084072.0 [as awaitable] (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\session_cipher.js:171:28)
+    at async _asyncQueueExecutor (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\queue_job.js:20:29)
+Failed to decrypt message with any known session...
+Session error:Error: Bad MAC Error: Bad MAC
+    at Object.verifyMAC (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\crypto.js:87:15)
+    at SessionCipher.doDecryptWhisperMessage (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\session_cipher.js:250:16)
+    at async SessionCipher.decryptWithSessions (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\session_cipher.js:147:29)
+    at async 158110631084072.0 [as awaitable] (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\session_cipher.js:171:28)
+    at async _asyncQueueExecutor (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\queue_job.js:20:29)
+Failed to decrypt message with any known session...
+Session error:Error: Bad MAC Error: Bad MAC
+    at Object.verifyMAC (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\crypto.js:87:15)
+    at SessionCipher.doDecryptWhisperMessage (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\session_cipher.js:250:16)
+    at async SessionCipher.decryptWithSessions (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\session_cipher.js:147:29)
+    at async 158110631084072.0 [as awaitable] (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\session_cipher.js:171:28)
+    at async _asyncQueueExecutor (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\queue_job.js:20:29)
+Failed to decrypt message with any known session...
+Session error:Error: Bad MAC Error: Bad MAC
+    at Object.verifyMAC (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\crypto.js:87:15)
+    at SessionCipher.doDecryptWhisperMessage (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\session_cipher.js:250:16)
+    at async SessionCipher.decryptWithSessions (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\session_cipher.js:147:29)
+    at async 158110631084072.0 [as awaitable] (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\session_cipher.js:171:28)
+    at async _asyncQueueExecutor (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\queue_job.js:20:29)
+Failed to decrypt message with any known session...
+Session error:Error: Bad MAC Error: Bad MAC
+    at Object.verifyMAC (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\crypto.js:87:15)
+    at SessionCipher.doDecryptWhisperMessage (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\session_cipher.js:250:16)
+    at async SessionCipher.decryptWithSessions (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\session_cipher.js:147:29)
+    at async 158110631084072.0 [as awaitable] (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\session_cipher.js:171:28)
+    at async _asyncQueueExecutor (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\queue_job.js:20:29)
+Failed to decrypt message with any known session...
+Session error:Error: Bad MAC Error: Bad MAC
+    at Object.verifyMAC (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\crypto.js:87:15)
+    at SessionCipher.doDecryptWhisperMessage (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\session_cipher.js:250:16)
+    at async SessionCipher.decryptWithSessions (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\session_cipher.js:147:29)
+    at async 158110631084072.0 [as awaitable] (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\session_cipher.js:171:28)
+    at async _asyncQueueExecutor (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\queue_job.js:20:29)
+Failed to decrypt message with any known session...
+Session error:Error: Bad MAC Error: Bad MAC
+    at Object.verifyMAC (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\crypto.js:87:15)
+    at SessionCipher.doDecryptWhisperMessage (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\session_cipher.js:250:16)
+    at async SessionCipher.decryptWithSessions (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\session_cipher.js:147:29)
+    at async 158110631084072.0 [as awaitable] (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\session_cipher.js:171:28)
+    at async _asyncQueueExecutor (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\queue_job.js:20:29)
+Failed to decrypt message with any known session...
+Session error:Error: Bad MAC Error: Bad MAC
+    at Object.verifyMAC (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\crypto.js:87:15)
+    at SessionCipher.doDecryptWhisperMessage (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\session_cipher.js:250:16)
+    at async SessionCipher.decryptWithSessions (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\session_cipher.js:147:29)
+    at async 158110631084072.0 [as awaitable] (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\session_cipher.js:171:28)
+    at async _asyncQueueExecutor (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\queue_job.js:20:29)
+Failed to decrypt message with any known session...
+Session error:Error: Bad MAC Error: Bad MAC
+    at Object.verifyMAC (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\crypto.js:87:15)
+    at SessionCipher.doDecryptWhisperMessage (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\session_cipher.js:250:16)
+    at async SessionCipher.decryptWithSessions (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\session_cipher.js:147:29)
+    at async 158110631084072.0 [as awaitable] (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\session_cipher.js:171:28)
+    at async _asyncQueueExecutor (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\queue_job.js:20:29)
+Failed to decrypt message with any known session...
+Session error:Error: Bad MAC Error: Bad MAC
+    at Object.verifyMAC (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\crypto.js:87:15)
+    at SessionCipher.doDecryptWhisperMessage (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\session_cipher.js:250:16)
+    at async SessionCipher.decryptWithSessions (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\session_cipher.js:147:29)
+    at async 158110631084072.0 [as awaitable] (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\session_cipher.js:171:28)
+    at async _asyncQueueExecutor (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\queue_job.js:20:29)
+Failed to decrypt message with any known session...
+Session error:Error: Bad MAC Error: Bad MAC
+    at Object.verifyMAC (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\crypto.js:87:15)
+    at SessionCipher.doDecryptWhisperMessage (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\session_cipher.js:250:16)
+    at async SessionCipher.decryptWithSessions (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\session_cipher.js:147:29)
+    at async 158110631084072.0 [as awaitable] (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\session_cipher.js:171:28)
+    at async _asyncQueueExecutor (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\queue_job.js:20:29)
+Failed to decrypt message with any known session...
+Session error:Error: Bad MAC Error: Bad MAC
+    at Object.verifyMAC (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\crypto.js:87:15)
+    at SessionCipher.doDecryptWhisperMessage (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\session_cipher.js:250:16)
+    at async SessionCipher.decryptWithSessions (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\session_cipher.js:147:29)
+    at async 158110631084072.0 [as awaitable] (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\session_cipher.js:171:28)
+    at async _asyncQueueExecutor (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\queue_job.js:20:29)
+Failed to decrypt message with any known session...
+Session error:Error: Bad MAC Error: Bad MAC
+    at Object.verifyMAC (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\crypto.js:87:15)
+    at SessionCipher.doDecryptWhisperMessage (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\session_cipher.js:250:16)
+    at async SessionCipher.decryptWithSessions (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\session_cipher.js:147:29)
+    at async 158110631084072.0 [as awaitable] (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\session_cipher.js:171:28)
+    at async _asyncQueueExecutor (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\queue_job.js:20:29)
+Failed to decrypt message with any known session...
+Session error:Error: Bad MAC Error: Bad MAC
+    at Object.verifyMAC (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\crypto.js:87:15)
+    at SessionCipher.doDecryptWhisperMessage (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\session_cipher.js:250:16)
+    at async SessionCipher.decryptWithSessions (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\session_cipher.js:147:29)
+    at async 158110631084072.0 [as awaitable] (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\session_cipher.js:171:28)
+    at async _asyncQueueExecutor (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\queue_job.js:20:29)
+Failed to decrypt message with any known session...
+Session error:Error: Bad MAC Error: Bad MAC
+    at Object.verifyMAC (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\crypto.js:87:15)
+    at SessionCipher.doDecryptWhisperMessage (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\session_cipher.js:250:16)
+    at async SessionCipher.decryptWithSessions (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\session_cipher.js:147:29)
+    at async 158110631084072.0 [as awaitable] (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\session_cipher.js:171:28)
+    at async _asyncQueueExecutor (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\queue_job.js:20:29)
+Failed to decrypt message with any known session...
+Session error:Error: Bad MAC Error: Bad MAC
+    at Object.verifyMAC (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\crypto.js:87:15)
+    at SessionCipher.doDecryptWhisperMessage (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\session_cipher.js:250:16)
+    at async SessionCipher.decryptWithSessions (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\session_cipher.js:147:29)
+    at async 158110631084072.0 [as awaitable] (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\session_cipher.js:171:28)
+    at async _asyncQueueExecutor (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\queue_job.js:20:29)
+Failed to decrypt message with any known session...
+Session error:Error: Bad MAC Error: Bad MAC
+    at Object.verifyMAC (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\crypto.js:87:15)
+    at SessionCipher.doDecryptWhisperMessage (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\session_cipher.js:250:16)
+    at async SessionCipher.decryptWithSessions (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\session_cipher.js:147:29)
+    at async 158110631084072.0 [as awaitable] (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\session_cipher.js:171:28)
+    at async _asyncQueueExecutor (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\queue_job.js:20:29)
+Failed to decrypt message with any known session...
+Session error:Error: Bad MAC Error: Bad MAC
+    at Object.verifyMAC (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\crypto.js:87:15)
+    at SessionCipher.doDecryptWhisperMessage (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\session_cipher.js:250:16)
+    at async SessionCipher.decryptWithSessions (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\session_cipher.js:147:29)
+    at async 158110631084072.0 [as awaitable] (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\session_cipher.js:171:28)
+    at async _asyncQueueExecutor (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\queue_job.js:20:29)
+Failed to decrypt message with any known session...
+Session error:Error: Bad MAC Error: Bad MAC
+    at Object.verifyMAC (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\crypto.js:87:15)
+    at SessionCipher.doDecryptWhisperMessage (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\session_cipher.js:250:16)
+    at async SessionCipher.decryptWithSessions (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\session_cipher.js:147:29)
+    at async 158110631084072.0 [as awaitable] (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\session_cipher.js:171:28)
+    at async _asyncQueueExecutor (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\queue_job.js:20:29)
+Failed to decrypt message with any known session...
+Session error:Error: Bad MAC Error: Bad MAC
+    at Object.verifyMAC (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\crypto.js:87:15)
+    at SessionCipher.doDecryptWhisperMessage (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\session_cipher.js:250:16)
+    at async SessionCipher.decryptWithSessions (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\session_cipher.js:147:29)
+    at async 158110631084072.0 [as awaitable] (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\session_cipher.js:171:28)
+    at async _asyncQueueExecutor (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\queue_job.js:20:29)
+Failed to decrypt message with any known session...
+Session error:Error: Bad MAC Error: Bad MAC
+    at Object.verifyMAC (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\crypto.js:87:15)
+    at SessionCipher.doDecryptWhisperMessage (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\session_cipher.js:250:16)
+    at async SessionCipher.decryptWithSessions (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\session_cipher.js:147:29)
+    at async 158110631084072.0 [as awaitable] (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\session_cipher.js:171:28)
+    at async _asyncQueueExecutor (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\queue_job.js:20:29)
+Failed to decrypt message with any known session...
+Session error:Error: Bad MAC Error: Bad MAC
+    at Object.verifyMAC (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\crypto.js:87:15)
+    at SessionCipher.doDecryptWhisperMessage (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\session_cipher.js:250:16)
+    at async SessionCipher.decryptWithSessions (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\session_cipher.js:147:29)
+    at async 158110631084072.0 [as awaitable] (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\session_cipher.js:171:28)
+    at async _asyncQueueExecutor (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\queue_job.js:20:29)
+Failed to decrypt message with any known session...
+Session error:Error: Bad MAC Error: Bad MAC
+    at Object.verifyMAC (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\crypto.js:87:15)
+    at SessionCipher.doDecryptWhisperMessage (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\session_cipher.js:250:16)
+    at async SessionCipher.decryptWithSessions (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\session_cipher.js:147:29)
+    at async 158110631084072.0 [as awaitable] (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\session_cipher.js:171:28)
+    at async _asyncQueueExecutor (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\queue_job.js:20:29)
+Failed to decrypt message with any known session...
+Session error:Error: Bad MAC Error: Bad MAC
+    at Object.verifyMAC (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\crypto.js:87:15)
+    at SessionCipher.doDecryptWhisperMessage (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\session_cipher.js:250:16)
+    at async SessionCipher.decryptWithSessions (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\session_cipher.js:147:29)
+    at async 158110631084072.0 [as awaitable] (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\session_cipher.js:171:28)
+    at async _asyncQueueExecutor (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\queue_job.js:20:29)
+Failed to decrypt message with any known session...
+Session error:Error: Bad MAC Error: Bad MAC
+    at Object.verifyMAC (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\crypto.js:87:15)
+    at SessionCipher.doDecryptWhisperMessage (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\session_cipher.js:250:16)
+    at async SessionCipher.decryptWithSessions (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\session_cipher.js:147:29)
+    at async 158110631084072.0 [as awaitable] (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\session_cipher.js:171:28)
+    at async _asyncQueueExecutor (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\queue_job.js:20:29)
+Failed to decrypt message with any known session...
+Session error:Error: Bad MAC Error: Bad MAC
+    at Object.verifyMAC (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\crypto.js:87:15)
+    at SessionCipher.doDecryptWhisperMessage (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\session_cipher.js:250:16)
+    at async SessionCipher.decryptWithSessions (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\session_cipher.js:147:29)
+    at async 158110631084072.0 [as awaitable] (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\session_cipher.js:171:28)
+    at async _asyncQueueExecutor (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\queue_job.js:20:29)
+Failed to decrypt message with any known session...
+Session error:Error: Bad MAC Error: Bad MAC
+    at Object.verifyMAC (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\crypto.js:87:15)
+    at SessionCipher.doDecryptWhisperMessage (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\session_cipher.js:250:16)
+    at async SessionCipher.decryptWithSessions (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\session_cipher.js:147:29)
+    at async 158110631084072.0 [as awaitable] (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\session_cipher.js:171:28)
+    at async _asyncQueueExecutor (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\queue_job.js:20:29)
+Failed to decrypt message with any known session...
+Session error:Error: Bad MAC Error: Bad MAC
+    at Object.verifyMAC (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\crypto.js:87:15)
+    at SessionCipher.doDecryptWhisperMessage (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\session_cipher.js:250:16)
+    at async SessionCipher.decryptWithSessions (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\session_cipher.js:147:29)
+    at async 158110631084072.0 [as awaitable] (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\session_cipher.js:171:28)
+    at async _asyncQueueExecutor (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\queue_job.js:20:29)
+Failed to decrypt message with any known session...
+Session error:Error: Bad MAC Error: Bad MAC
+    at Object.verifyMAC (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\crypto.js:87:15)
+    at SessionCipher.doDecryptWhisperMessage (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\session_cipher.js:250:16)
+    at async SessionCipher.decryptWithSessions (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\session_cipher.js:147:29)
+    at async 158110631084072.0 [as awaitable] (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\session_cipher.js:171:28)
+    at async _asyncQueueExecutor (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\queue_job.js:20:29)
+Failed to decrypt message with any known session...
+Session error:Error: Bad MAC Error: Bad MAC
+    at Object.verifyMAC (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\crypto.js:87:15)
+    at SessionCipher.doDecryptWhisperMessage (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\session_cipher.js:250:16)
+    at async SessionCipher.decryptWithSessions (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\session_cipher.js:147:29)
+    at async 158110631084072.0 [as awaitable] (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\session_cipher.js:171:28)
+    at async _asyncQueueExecutor (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\queue_job.js:20:29)
+Failed to decrypt message with any known session...
+Session error:Error: Bad MAC Error: Bad MAC
+    at Object.verifyMAC (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\crypto.js:87:15)
+    at SessionCipher.doDecryptWhisperMessage (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\session_cipher.js:250:16)
+    at async SessionCipher.decryptWithSessions (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\session_cipher.js:147:29)
+    at async 158110631084072.0 [as awaitable] (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\session_cipher.js:171:28)
+    at async _asyncQueueExecutor (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\queue_job.js:20:29)
+Failed to decrypt message with any known session...
+Session error:Error: Bad MAC Error: Bad MAC
+    at Object.verifyMAC (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\crypto.js:87:15)
+    at SessionCipher.doDecryptWhisperMessage (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\session_cipher.js:250:16)
+    at async SessionCipher.decryptWithSessions (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\session_cipher.js:147:29)
+    at async 158110631084072.0 [as awaitable] (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\session_cipher.js:171:28)
+    at async _asyncQueueExecutor (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\queue_job.js:20:29)
+Failed to decrypt message with any known session...
+Session error:Error: Bad MAC Error: Bad MAC
+    at Object.verifyMAC (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\crypto.js:87:15)
+    at SessionCipher.doDecryptWhisperMessage (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\session_cipher.js:250:16)
+    at async SessionCipher.decryptWithSessions (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\session_cipher.js:147:29)
+    at async 158110631084072.0 [as awaitable] (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\session_cipher.js:171:28)
+    at async _asyncQueueExecutor (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\queue_job.js:20:29)
+Failed to decrypt message with any known session...
+Session error:Error: Bad MAC Error: Bad MAC
+    at Object.verifyMAC (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\crypto.js:87:15)
+    at SessionCipher.doDecryptWhisperMessage (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\session_cipher.js:250:16)
+    at async SessionCipher.decryptWithSessions (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\session_cipher.js:147:29)
+    at async 158110631084072.0 [as awaitable] (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\session_cipher.js:171:28)
+    at async _asyncQueueExecutor (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\queue_job.js:20:29)
+Failed to decrypt message with any known session...
+Session error:Error: Bad MAC Error: Bad MAC
+    at Object.verifyMAC (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\crypto.js:87:15)
+    at SessionCipher.doDecryptWhisperMessage (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\session_cipher.js:250:16)
+    at async SessionCipher.decryptWithSessions (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\session_cipher.js:147:29)
+    at async 158110631084072.0 [as awaitable] (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\session_cipher.js:171:28)
+    at async _asyncQueueExecutor (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\queue_job.js:20:29)
+Failed to decrypt message with any known session...
+Session error:Error: Bad MAC Error: Bad MAC
+    at Object.verifyMAC (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\crypto.js:87:15)
+    at SessionCipher.doDecryptWhisperMessage (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\session_cipher.js:250:16)
+    at async SessionCipher.decryptWithSessions (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\session_cipher.js:147:29)
+    at async 158110631084072.0 [as awaitable] (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\session_cipher.js:171:28)
+    at async _asyncQueueExecutor (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\queue_job.js:20:29)
+Failed to decrypt message with any known session...
+Session error:Error: Bad MAC Error: Bad MAC
+    at Object.verifyMAC (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\crypto.js:87:15)
+    at SessionCipher.doDecryptWhisperMessage (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\session_cipher.js:250:16)
+    at async SessionCipher.decryptWithSessions (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\session_cipher.js:147:29)
+    at async 158110631084072.0 [as awaitable] (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\session_cipher.js:171:28)
+    at async _asyncQueueExecutor (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\queue_job.js:20:29)
+Failed to decrypt message with any known session...
+Session error:Error: Bad MAC Error: Bad MAC
+    at Object.verifyMAC (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\crypto.js:87:15)
+    at SessionCipher.doDecryptWhisperMessage (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\session_cipher.js:250:16)
+    at async SessionCipher.decryptWithSessions (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\session_cipher.js:147:29)
+    at async 158110631084072.0 [as awaitable] (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\session_cipher.js:171:28)
+    at async _asyncQueueExecutor (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\queue_job.js:20:29)
+Failed to decrypt message with any known session...
+Session error:Error: Bad MAC Error: Bad MAC
+    at Object.verifyMAC (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\crypto.js:87:15)
+    at SessionCipher.doDecryptWhisperMessage (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\session_cipher.js:250:16)
+    at async SessionCipher.decryptWithSessions (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\session_cipher.js:147:29)
+    at async 158110631084072.0 [as awaitable] (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\session_cipher.js:171:28)
+    at async _asyncQueueExecutor (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\queue_job.js:20:29)
+Failed to decrypt message with any known session...
+Session error:Error: Bad MAC Error: Bad MAC
+    at Object.verifyMAC (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\crypto.js:87:15)
+    at SessionCipher.doDecryptWhisperMessage (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\session_cipher.js:250:16)
+    at async SessionCipher.decryptWithSessions (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\session_cipher.js:147:29)
+    at async 158110631084072.0 [as awaitable] (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\session_cipher.js:171:28)
+    at async _asyncQueueExecutor (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\queue_job.js:20:29)
+Failed to decrypt message with any known session...
+Session error:Error: Bad MAC Error: Bad MAC
+    at Object.verifyMAC (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\crypto.js:87:15)
+    at SessionCipher.doDecryptWhisperMessage (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\session_cipher.js:250:16)
+    at async SessionCipher.decryptWithSessions (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\session_cipher.js:147:29)
+    at async 158110631084072.0 [as awaitable] (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\session_cipher.js:171:28)
+    at async _asyncQueueExecutor (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\queue_job.js:20:29)
+2026-10-25 17:54:20 | INFO  | WhatsApp conectado.
+2026-10-25 17:54:22 | INFO  | prévia: (sem título) | imagem=false
+2026-10-25 17:54:22 | INFO  | Enviado ao canal: 📢 Promoção nova  SUA CASA AESTHETIC  🪞 Espelho Rocco Corpo
+2026-10-25 17:54:23 | INFO  | prévia: (sem título) | imagem=false
+2026-10-25 17:54:23 | INFO  | Enviado ao canal: 📢 Promoção nova  BORA TREINAR AMIGA?  💪 Short Saia Fitness
+2026-10-25 17:54:27 | INFO  | prévia: Dove Hidratante Sérum Corporal Glicólico + Reparador de Textura 180ml | Amazon.com.br | imagem=true
+2026-10-25 17:54:27 | INFO  | Enviado ao canal: 📢 Promoção nova  DEIXAR TUA PELE HIDRATADA E CHEIROSA  🧴 D
+2026-10-25 17:54:30 | INFO  | prévia: Hellmann's Maionese Supreme 330G : Amazon.com.br: Alimentos e Bebidas | imagem=true
+2026-10-25 17:54:30 | INFO  | Enviado ao canal: 📢 Promoção nova  A SUPREMA DAS SUPREMAS  🍔 Hellmann's Maio
+2026-10-25 17:54:31 | INFO  | prévia: L'Oréal Paris Elseve Glycolic Gloss, Sérum Finalizador Antiporosidade 100ml | Amazon.com.br | imagem=true
+2026-10-25 17:54:31 | INFO  | Enviado ao canal: 📢 Promoção nova  CUIDAR DESSA CEBELINHO LINDUU  🧴 L'Oréal 
+2026-10-25 17:54:34 | INFO  | prévia: Heinz Maionese Culinária 400G | Amazon.com.br | imagem=true
+2026-10-25 17:54:34 | INFO  | Enviado ao canal: 📢 Promoção nova  PRA TU FAZER AQUELE SANDUBA DO BAUM  🍔 He
+2026-10-25 17:54:35 | INFO  | prévia: Biscoito Pedigree Biscrok Para Cães Adultos Raças Pequenas, 1 kg | Amazon.com.br | imagem=true
+2026-10-25 17:54:35 | INFO  | Enviado ao canal: 📢 Promoção nova  UM AGRADO PRO SEU DOGUINHO  🐶 Biscoito Pe
+2026-10-25 17:59:21 | INFO  | prévia: (sem título) | imagem=false
+2026-10-25 17:59:21 | INFO  | Enviado ao canal: 📢 Promoção nova  TEM Q SER XEROSO  ✅ Kit Body Splash Advent
+2026-10-25 18:07:12 | INFO  | prévia: (sem título) | imagem=false
+2026-10-25 18:07:12 | INFO  | Enviado ao canal: 📢 Promoção nova  PISANTINHO BARATEZA DA KAPPA  👟 Tênis Cas
+2026-10-25 18:13:31 | INFO  | prévia: Escova de cabelo desembaraçadora The Mini Ultimate Detangler para todos os tipos de cabelo, ideal para o uso em fios úmidos. Cor: Preta | Amazon.com.br | imagem=true
+2026-10-25 18:13:31 | INFO  | Enviado ao canal: 📢 Promoção nova  A ESCOVA FAMOSINHAA  👩 ‍Escova de cabelo 
+2026-10-25 18:17:32 | INFO  | prévia: (sem título) | imagem=false
+2026-10-25 18:17:32 | INFO  | Enviado ao canal: 📢 Promoção nova  🚨 NOVOS CUPONS MERCADO LIVRE 🚨  ➡️ 20% O
+2026-10-25 18:24:13 | INFO  | prévia: (sem título) | imagem=false
+2026-10-25 18:24:13 | INFO  | Enviado ao canal: 📢 Promoção nova  PRA GOURMETIZAR A TUA COZINHA TODA  ✅ Cuba
+2026-10-25 18:31:35 | INFO  | prévia: Armário Multiuso 2 Portas Aramóveis New | Amazon.com.br | imagem=true
+2026-10-25 18:31:35 | INFO  | Enviado ao canal: 📢 Promoção nova  ORGANIZE (OU ESCONDA) TUA COISAS  ✅ Armári
+2026-10-25 18:38:03 | INFO  | prévia: (sem título) | imagem=false
+2026-10-25 18:38:03 | INFO  | Enviado ao canal: 📢 Promoção nova  BASIQUIN PRA AJUDAR NA SUA ROTINA  ⌚️ Smar
+2026-10-25 18:43:20 | INFO  | prévia: (sem título) | imagem=false
+2026-10-25 18:43:20 | INFO  | Enviado ao canal: 📢 Promoção nova  A HORA DE TROCAR É AGORA  🛌 Jogo De Lenço
+2026-10-25 18:44:16 | WARN  | WhatsApp desconectou. reconectando...
+2026-10-25 18:44:20 | INFO  | WhatsApp conectado.
+Failed to decrypt message with any known session...
+Session error:Error: Bad MAC Error: Bad MAC
+    at Object.verifyMAC (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\crypto.js:87:15)
+    at SessionCipher.doDecryptWhisperMessage (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\session_cipher.js:250:16)
+    at async SessionCipher.decryptWithSessions (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\session_cipher.js:147:29)
+    at async 158110631084072.0 [as awaitable] (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\session_cipher.js:171:28)
+    at async _asyncQueueExecutor (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\queue_job.js:20:29)
+Failed to decrypt message with any known session...
+Session error:Error: Bad MAC Error: Bad MAC
+    at Object.verifyMAC (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\crypto.js:87:15)
+    at SessionCipher.doDecryptWhisperMessage (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\session_cipher.js:250:16)
+    at async SessionCipher.decryptWithSessions (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\session_cipher.js:147:29)
+    at async 158110631084072.0 [as awaitable] (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\session_cipher.js:171:28)
+    at async _asyncQueueExecutor (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\queue_job.js:20:29)
+Failed to decrypt message with any known session...
+Session error:Error: Bad MAC Error: Bad MAC
+    at Object.verifyMAC (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\crypto.js:87:15)
+    at SessionCipher.doDecryptWhisperMessage (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\session_cipher.js:250:16)
+    at async SessionCipher.decryptWithSessions (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\session_cipher.js:147:29)
+    at async 158110631084072.0 [as awaitable] (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\session_cipher.js:171:28)
+    at async _asyncQueueExecutor (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\queue_job.js:20:29)
+Failed to decrypt message with any known session...
+Session error:Error: Bad MAC Error: Bad MAC
+    at Object.verifyMAC (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\crypto.js:87:15)
+    at SessionCipher.doDecryptWhisperMessage (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\session_cipher.js:250:16)
+    at async SessionCipher.decryptWithSessions (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\session_cipher.js:147:29)
+    at async 158110631084072.0 [as awaitable] (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\session_cipher.js:171:28)
+    at async _asyncQueueExecutor (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\queue_job.js:20:29)
+Failed to decrypt message with any known session...
+Session error:Error: Bad MAC Error: Bad MAC
+    at Object.verifyMAC (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\crypto.js:87:15)
+    at SessionCipher.doDecryptWhisperMessage (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\session_cipher.js:250:16)
+    at async SessionCipher.decryptWithSessions (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\session_cipher.js:147:29)
+    at async 158110631084072.0 [as awaitable] (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\session_cipher.js:171:28)
+    at async _asyncQueueExecutor (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\queue_job.js:20:29)
+Failed to decrypt message with any known session...
+Session error:Error: Bad MAC Error: Bad MAC
+    at Object.verifyMAC (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\crypto.js:87:15)
+    at SessionCipher.doDecryptWhisperMessage (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\session_cipher.js:250:16)
+    at async SessionCipher.decryptWithSessions (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\session_cipher.js:147:29)
+    at async 158110631084072.0 [as awaitable] (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\session_cipher.js:171:28)
+    at async _asyncQueueExecutor (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\queue_job.js:20:29)
+Failed to decrypt message with any known session...
+Session error:Error: Bad MAC Error: Bad MAC
+    at Object.verifyMAC (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\crypto.js:87:15)
+    at SessionCipher.doDecryptWhisperMessage (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\session_cipher.js:250:16)
+    at async SessionCipher.decryptWithSessions (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\session_cipher.js:147:29)
+    at async 158110631084072.0 [as awaitable] (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\session_cipher.js:171:28)
+    at async _asyncQueueExecutor (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\queue_job.js:20:29)
+Failed to decrypt message with any known session...
+Session error:Error: Bad MAC Error: Bad MAC
+    at Object.verifyMAC (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\crypto.js:87:15)
+    at SessionCipher.doDecryptWhisperMessage (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\session_cipher.js:250:16)
+    at async SessionCipher.decryptWithSessions (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\session_cipher.js:147:29)
+    at async 158110631084072.0 [as awaitable] (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\session_cipher.js:171:28)
+    at async _asyncQueueExecutor (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\queue_job.js:20:29)
+Failed to decrypt message with any known session...
+Session error:Error: Bad MAC Error: Bad MAC
+    at Object.verifyMAC (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\crypto.js:87:15)
+    at SessionCipher.doDecryptWhisperMessage (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\session_cipher.js:250:16)
+    at async SessionCipher.decryptWithSessions (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\session_cipher.js:147:29)
+    at async 158110631084072.0 [as awaitable] (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\session_cipher.js:171:28)
+    at async _asyncQueueExecutor (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\queue_job.js:20:29)
+Failed to decrypt message with any known session...
+Session error:Error: Bad MAC Error: Bad MAC
+    at Object.verifyMAC (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\crypto.js:87:15)
+    at SessionCipher.doDecryptWhisperMessage (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\session_cipher.js:250:16)
+    at async SessionCipher.decryptWithSessions (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\session_cipher.js:147:29)
+    at async 158110631084072.0 [as awaitable] (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\session_cipher.js:171:28)
+    at async _asyncQueueExecutor (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\queue_job.js:20:29)
+Failed to decrypt message with any known session...
+Session error:Error: Bad MAC Error: Bad MAC
+    at Object.verifyMAC (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\crypto.js:87:15)
+    at SessionCipher.doDecryptWhisperMessage (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\session_cipher.js:250:16)
+    at async SessionCipher.decryptWithSessions (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\session_cipher.js:147:29)
+    at async 158110631084072.0 [as awaitable] (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\session_cipher.js:171:28)
+    at async _asyncQueueExecutor (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\queue_job.js:20:29)
+Failed to decrypt message with any known session...
+Session error:Error: Bad MAC Error: Bad MAC
+    at Object.verifyMAC (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\crypto.js:87:15)
+    at SessionCipher.doDecryptWhisperMessage (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\session_cipher.js:250:16)
+    at async SessionCipher.decryptWithSessions (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\session_cipher.js:147:29)
+    at async 158110631084072.0 [as awaitable] (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\session_cipher.js:171:28)
+    at async _asyncQueueExecutor (C:\Users\roger\OneDrive\Documentos\ClonadorDePromocao\nodebot\node_modules\libsignal\src\queue_job.js:20:29)
+2026-10-25 18:48:14 | INFO  | prévia: (sem título) | imagem=false
+2026-10-25 18:48:14 | INFO  | Enviado ao canal: 📢 Promoção nova  CUIDAR DO ROSTINHO DO GRUPO  ✅ Principia K
+2026-10-25 18:55:35 | INFO  | prévia: Deo Parfum Feminino Ilía Laços 50 ml | imagem=true
+2026-10-25 18:55:35 | INFO  | Enviado ao canal: 📢 Promoção nova  JÁ SINTO O CHEIRINHO DE FLORAL NO AR  💨 D
+2026-10-25 18:58:58 | INFO  | prévia: (sem título) | imagem=false
+2026-10-25 18:58:58 | INFO  | Enviado ao canal: 📢 Promoção nova  BOTAR TEUS PRODUTOS DE LIMPEZA  ✅ Pote Her
+2026-10-25 19:08:46 | INFO  | prévia: Panela de Pressão Eletrônica Ped-01 127v/60hz Agratto, 3878, Inox | 305W/60Hz | Amazon.com.br | imagem=true
+2026-10-25 19:08:46 | INFO  | Enviado ao canal: 📢 Promoção nova  CÊ JA PASSOU DA IDADE DE TER MEDO DE PANEL
+2026-10-25 19:11:41 | INFO  | prévia: (sem título) | imagem=false
+2026-10-25 19:11:41 | INFO  | Enviado ao canal: 📢 Promoção nova  ESSE IMPRESSIONA POR ONDE PASSA  🌬 Perfum
+2026-10-25 19:14:34 | INFO  | prévia: (sem título) | imagem=false
+2026-10-25 19:14:34 | INFO  | Enviado ao canal: 📢 Promoção nova  AJUDAR TU DAR UMA GERAL NO BARRACO   🌬 As
+2026-10-25 19:17:19 | INFO  | prévia: Pepinos em Conserva Agridoce Hemmer Vidro 440G | Amazon.com.br | imagem=true
+2026-10-25 19:17:19 | INFO  | Enviado ao canal: 📢 Promoção nova  QUEM GOSTA?  🥒 Pepinos em Conserva Agrido
+2026-10-25 19:20:05 | INFO  | prévia: (sem título) | imagem=false
+2026-10-25 19:20:05 | INFO  | Enviado ao canal: 📢 Promoção nova  PISE FOFO DE VIRGULADO  👟 Tênis Nike Upli
+2026-10-25 19:28:28 | INFO  | prévia: (sem título) | imagem=false
+2026-10-25 19:28:28 | INFO  | Enviado ao canal: 📢 Promoção nova  GORDURA BOA PRA SAÚDE  💊 Ômega 3 EPA DHA 
+2026-10-25 19:34:19 | WARN  | WhatsApp desconectou. reconectando...
+2026-10-25 19:34:23 | INFO  | WhatsApp conectado.
+2026-10-25 19:38:15 | INFO  | prévia: Liquidificador Daily 2L 550W RI2110, Preto, 220v, Philips Walita | Vitaminas e Sucos na Hora – lâminas eficientes para o preparo de bebidas e receitas variadas (RI2110/90) | Amazon.com.br | imagem=true
+2026-10-25 19:38:15 | INFO  | Enviado ao canal: 📢 Promoção nova  PRA AGILIZAR AQUELA VITAMINA  ✅ Liquidific
+2026-10-25 19:44:40 | WARN  | prévia do link falhou: Cannot read properties of undefined (reading 'toString')
+2026-10-25 19:44:40 | INFO  | Enviado ao canal: 📢 Promoção nova  VIRGULADO LINDISSIMO  👟 Tênis Nike Court 
+2026-10-25 19:48:32 | INFO  | prévia: Hada Labo® Gokujyun Oil Cleansing - Óleo de limpeza facial demaquilante com Ácido Hialurônico 200ml : Amazon.com.br: Beleza | imagem=true
+2026-10-25 19:48:32 | INFO  | Enviado ao canal: 📢 Promoção nova  REMOVE A MAKE COM MUITA FACILIDADE  🫧 Had

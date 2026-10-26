@@ -27,8 +27,10 @@ const URL_RE = /https?:\/\/[^\s<>()\[\]{}"']+/i;
 
 async function flush() {
   while (ready && queue.length) {
-    const text = queue.shift();
-    await deliver(text).catch((e) => log.error("Falha no envio:", e.message));
+    const item = queue.shift();
+    await deliver(item.text, item.image).catch((e) =>
+      log.error("Falha no envio:", e.message)
+    );
   }
 }
 
@@ -67,19 +69,25 @@ async function buildPreview(text) {
   }
 }
 
-async function deliver(text) {
+async function deliver(text, image) {
   if (!config.channelJid) {
     log.warn(
       "WHATSAPP_CHANNEL_JID não configurado — rode `npm run resolve-channel <link>`."
     );
     return;
   }
-  const linkPreview = await buildPreview(text);
-  await sock.sendMessage(config.channelJid, { text, linkPreview });
+  if (image) {
+    // foto do produto vinda do Telegram: envia como imagem + legenda (confiável)
+    await sock.sendMessage(config.channelJid, { image, caption: text });
+  } else {
+    // sem foto: usa a prévia do link (depende do site ter imagem)
+    const linkPreview = await buildPreview(text);
+    await sock.sendMessage(config.channelJid, { text, linkPreview });
+  }
   const resumo = text.slice(0, 60).replace(/\n/g, " ");
   sent += 1;
   setStatus({ lastSent: resumo, lastSentAt: new Date().toISOString(), sentCount: sent });
-  log.info("Enviado ao canal:", resumo);
+  log.info("Enviado ao canal%s:", image ? " [img]" : "", resumo);
 }
 
 /** Conecta ao WhatsApp via Baileys, mostra QR na 1ª vez e reconecta sozinho. */
@@ -136,13 +144,13 @@ export async function startWhatsApp() {
   return sock;
 }
 
-/** Envia um texto ao canal; enfileira se ainda não estiver conectado. */
-export async function sendToChannel(text) {
+/** Envia texto (e foto opcional) ao canal; enfileira se ainda não conectado. */
+export async function sendToChannel(text, image = null) {
   if (!ready) {
-    queue.push(text);
+    queue.push({ text, image });
     return;
   }
-  await deliver(text);
+  await deliver(text, image);
 }
 
 export function getSocket() {

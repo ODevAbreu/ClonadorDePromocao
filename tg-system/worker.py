@@ -7,6 +7,7 @@ reconstrói. Roda no mesmo loop asyncio do painel (via lifespan do FastAPI).
 from __future__ import annotations
 
 import asyncio
+import json
 import logging
 
 from telethon import events
@@ -19,6 +20,16 @@ from tg_manager import manager
 log = logging.getLogger("worker")
 
 POLL_SECONDS = 5
+
+
+def _config_sig(config: str) -> str:
+    """Assinatura da config da integração SEM o cookie (que rotaciona sozinho)."""
+    try:
+        cfg = json.loads(config or "{}")
+        cfg.pop("cookie", None)
+        return json.dumps(cfg, sort_keys=True)
+    except json.JSONDecodeError:
+        return config or ""
 
 
 class ForwardWorker:
@@ -87,8 +98,12 @@ class ForwardWorker:
 
     @staticmethod
     def _snapshot(t: ForwardTask) -> dict:
-        # as integrações da tarefa entram na assinatura: se mudarem, reconstrói
-        ig_sig = tuple(sorted((i.id, i.type, i.config, i.enabled) for i in t.integrations))
+        # as integrações da tarefa entram na assinatura: se mudarem, reconstrói.
+        # o cookie do ML rotaciona sozinho — fora da assinatura p/ não ficar
+        # reconstruindo o handler a cada renovação.
+        ig_sig = tuple(sorted(
+            (i.id, i.type, _config_sig(i.config), i.enabled) for i in t.integrations
+        ))
         return {
             "sig": t.signature() + (ig_sig,),
             "integrations": build_integrations(list(t.integrations)),

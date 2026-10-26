@@ -10,8 +10,8 @@ async function main() {
   // WhatsApp conecta em segundo plano; mensagens que chegarem antes ficam na fila.
   startWhatsApp().catch((e) => log.error("WhatsApp:", e.message));
 
-  startTelegram(async (text) => {
-    await sendToChannel(format(text));
+  startTelegram(async (text, image) => {
+    await sendToChannel(format(text), image);
   });
 
   const shutdown = (sig) => {

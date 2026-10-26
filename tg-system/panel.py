@@ -39,9 +39,40 @@ logging.basicConfig(level=logging.INFO,
 templates = Jinja2Templates(directory="templates")
 
 
+def _persist_ml_cookie(row_id: int, cookie: str) -> None:
+    """Grava o cookie rotacionado do ML de volta no banco (sessão não expira).
+
+    Preserva os headers do navegador (user-agent, sec-ch-ua...) — atualiza só o
+    valor do cookie dentro do JSON de headers, senão o ML volta a dar 403.
+    """
+    with SessionLocal() as db:
+        it = db.get(Integration, row_id)
+        if not it:
+            return
+        try:
+            cfg = json.loads(it.config or "{}")
+        except json.JSONDecodeError:
+            cfg = {}
+        raw = (cfg.get("cookie") or "").strip()
+        if raw.startswith("{"):
+            try:
+                headers = json.loads(raw)
+                key = next((k for k in headers if k.lower() == "cookie"), "cookie")
+                headers[key] = cookie
+                cfg["cookie"] = json.dumps(headers)
+            except json.JSONDecodeError:
+                cfg["cookie"] = cookie
+        else:
+            cfg["cookie"] = cookie
+        it.config = json.dumps(cfg)
+        db.commit()
+
+
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     init_db()
+    from integrations import set_cookie_persister
+    set_cookie_persister(_persist_ml_cookie)
     t1 = asyncio.create_task(worker.run())         # forward ao vivo
     t2 = asyncio.create_task(clone_runner.run())   # trabalhos de clone
     yield
